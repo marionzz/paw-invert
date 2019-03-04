@@ -11,7 +11,7 @@ var injectScript = function() {
 
 			if (isDarkMode) {
 				if (lowerCaseTagName === 'body') {
-					node.style["filter"] = 'invert(100%)';
+					node.style["filter"] = invertFilter;
 					return;
 				}
 			} else {
@@ -20,7 +20,15 @@ var injectScript = function() {
 					|| lowerCaseTagName === 'video'
 					|| (node.style.backgroundImage && lowerCaseTagName !== 'input')
 				) {
-					node.style["filter"] = 'invert(100%)';
+                                        var parentNode = node.parentNode;
+                                        while (parentNode) {
+                                            if (parentNode.style && parentNode.style["filter"] === invertFilter) {
+                                                return;
+                                            }
+                                            parentNode = parentNode.parentNode;
+                                        }
+
+					node.style["filter"] = invertFilter;
 					return;
 				}
 			}

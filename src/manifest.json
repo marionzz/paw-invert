@@ -9,7 +9,7 @@
   ],
   "manifest_version": 2,
   "name": "PAW Invert",
-  "version": "1.0",
+  "version": "1.1",
   "description": "PAW will invert all images and videos in webpages so you can use your OS in negate mode and save your eyes.",
   "background": {
     "scripts": ["background.js"]
